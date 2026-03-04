@@ -1,11 +1,3 @@
-import {kStringMaxLength} from 'buffer'
-import * as fs from 'fs'
-import * as path from 'path'
-
-import * as core from '@actions/core'
-
-const k8s = require('@kubernetes/client-node')
-
 import {
    CoreV1Api,
    KubeConfig,
@@ -18,12 +10,7 @@ import {
    buildSecret,
    checkClusterContext,
    DockerConfigJSON
-} from '../src/run'
-
-const mockk8s = jest.mocked(k8s, {shallow: true})
-const mockApi = jest.mocked(CoreV1Api, {shallow: true})
-
-const fileUtility = jest.mocked(fs, {shallow: true})
+} from '../src/run.js'
 
 beforeAll(() => {
    process.env['RUNNER_TEMP'] = '/home/runner/work/_temp'
